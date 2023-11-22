@@ -1,0 +1,206 @@
+{
+	"info": {
+		"_postman_id": "81b36a20-6cc4-4269-b65a-7880ffe93b24",
+		"name": "Scrum",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11654312",
+		"_collection_link": "https://lunar-meteor-264773.postman.co/workspace/e80868ca-722e-4119-b9c2-b0b88c66628a/collection/11654312-81b36a20-6cc4-4269-b65a-7880ffe93b24?action=share&source=collection_link&creator=11654312"
+	},
+	"item": [
+		{
+			"name": "create retrospective",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\" : \"“Retrospective 1\",\n    \"summary\": \"Post release retrospective\",\n    \"date\": \"2023-11-21\",\n    \"participants\": [\"victor\",\"Gareth\",\"Mike\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/retrospectives",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"retrospectives"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add feedback",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\" : \"Gareth\",\n    \"body\": \"Sprint objective met\",\n    \"feedbackType\": \"POSITIVE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/retrospectives/1/feedback",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"retrospectives",
+						"1",
+						"feedback"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update feedback",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\" : \"Gareth\",\n    \"body\": \"Sprint objective met\",\n    \"feedbackType\": \"IDEA\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/retrospectives/1/feedback/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"retrospectives",
+						"1",
+						"feedback",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Retrospectives",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/retrospectives?page=0&size=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"retrospectives"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get feedback by retrospective",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\" : \"Gareth\",\n    \"body\": \"Sprint objective met\",\n    \"feedbackType\": \"POSITIVE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/retrospectives/1/feedback",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"retrospectives",
+						"1",
+						"feedback"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search Retrospectives by date",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/retrospectives/searchByDate?date=2023-11-21",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"retrospectives",
+						"searchByDate"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "2023-11-21"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
